@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 397a5579fb6b6074abc0c0e035b85e55
+guid: 91e60a7c24a37da429f7313dcc35a8dc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,12 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gold_Material
-    second: {fileID: 2100000, guid: d748d3468972c8d418308e7c32cf6525, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Suit_Material
+      name: lambert1
     second: {fileID: 2100000, guid: 77be2fea446c9164582707c6a9265efa, type: 2}
   materials:
     materialImportMode: 2
@@ -26,6 +21,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -107,7 +104,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
