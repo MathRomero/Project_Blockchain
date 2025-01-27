@@ -275,6 +275,7 @@ MonoBehaviour:
   speed: {fileID: 11400000, guid: 967c41be0634b3e40803471165358411, type: 2}
   mapBlock: {fileID: 4986727104848914051, guid: ffc0a610c75f6584e88c8580239a2c63,
     type: 3}
+  mapBlocks: []
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,8 +590,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {fileID: 11400000, guid: 967c41be0634b3e40803471165358411, type: 2}
-  mapBlock: {fileID: 4986727104848914051, guid: ffc0a610c75f6584e88c8580239a2c63,
+  mapBlock: {fileID: 1881029521357306232, guid: e907316457073a047bed11ebda575277,
     type: 3}
+  mapBlocks:
+  - {fileID: 826330288983048438, guid: 68f746393873c9a4fa8e438b8e8ca7e9, type: 3}
+  - {fileID: 6803611119126291828, guid: fa1e9e6dd67b17145aec09a20fb6e5bb, type: 3}
+  - {fileID: 5112757176730593422, guid: 64b573a0c6b85174db93a9bdbfdaff53, type: 3}
+  - {fileID: 1501284561913509325, guid: 7c8f18ae526e703438410ad44a7541ee, type: 3}
+  - {fileID: 8247458410222867440, guid: ac74f32693819504ead366cf9c2b4179, type: 3}
+  - {fileID: 4678024201037016678, guid: 92beb3b3dfbf01c4c8a610d0ba4aad66, type: 3}
 --- !u!1001 &2079846585
 PrefabInstance:
   m_ObjectHideFlags: 0
