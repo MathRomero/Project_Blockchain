@@ -640,6 +640,12 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 707894232}
+
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91e60a7c24a37da429f7313dcc35a8dc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 707894237}
+
   m_SourcePrefab: {fileID: 100100000, guid: 91e60a7c24a37da429f7313dcc35a8dc, type: 3}
 --- !u!1 &707894229 stripped
 GameObject:
@@ -766,6 +772,19 @@ MonoBehaviour:
   m_DefaultActionMap: deplacement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &707894237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707894229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e4137421a4ada4f8ad3bd815f57b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {fileID: 11400000, guid: 967c41be0634b3e40803471165358411, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,12 +985,12 @@ MonoBehaviour:
   mapBlock: {fileID: 1881029521357306232, guid: e907316457073a047bed11ebda575277,
     type: 3}
   mapBlocks:
-  - {fileID: 826330288983048438, guid: 68f746393873c9a4fa8e438b8e8ca7e9, type: 3}
-  - {fileID: 6803611119126291828, guid: fa1e9e6dd67b17145aec09a20fb6e5bb, type: 3}
-  - {fileID: 5112757176730593422, guid: 64b573a0c6b85174db93a9bdbfdaff53, type: 3}
-  - {fileID: 1501284561913509325, guid: 7c8f18ae526e703438410ad44a7541ee, type: 3}
-  - {fileID: 8247458410222867440, guid: ac74f32693819504ead366cf9c2b4179, type: 3}
-  - {fileID: 4678024201037016678, guid: 92beb3b3dfbf01c4c8a610d0ba4aad66, type: 3}
+  - {fileID: 8226152936753944213, guid: 55d156c93e6cf7e4c8c7a55a4434fbb0, type: 3}
+  - {fileID: 4084314532011740719, guid: 378e1e4e9f06646469e7a03e4f254a62, type: 3}
+  - {fileID: 5381034882605890775, guid: 9a022720ce991e247b6b52186033b817, type: 3}
+  - {fileID: 2892305006283678879, guid: beb16d3e0249ec7499d9ee803ab3acd7, type: 3}
+  - {fileID: 3408469342038680373, guid: 8d4ddcd335e141748867863b33f19a70, type: 3}
+  - {fileID: 5696789416474714953, guid: 6fdab82b912734c41928ace421e28e0c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
