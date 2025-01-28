@@ -11,18 +11,20 @@ public class MapGenerator : MonoBehaviour
     void Start()
     {
         speed.value = 1f;
-        int blockType = Random.Range(0, 6);
 
+        Instantiate(mapBlock, new Vector3(0, 0, -11), Quaternion.Euler(0, 180, 0));
         Instantiate(mapBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0));
-        Instantiate(mapBlocks[blockType], new Vector3(0, 0, 11), Quaternion.Euler(0, 180, 0));
+        Instantiate(mapBlocks[Random.Range(0, 6)], new Vector3(0, 0, 11), Quaternion.Euler(0, 180, 0));
+        Instantiate(mapBlocks[Random.Range(0, 6)], new Vector3(0, 0, 22), Quaternion.Euler(0, 180, 0));
     }
 
     private void OnTriggerEnter(Collider other)
-    { 
+    {
         int blockType = Random.Range(0, 6);
-        float diff = 11 + other.transform.position.z;
+        float diff = 22 + other.transform.position.z;
 
-        Instantiate(mapBlocks[blockType], new Vector3(0, 0, 11 + diff), Quaternion.Euler(0, 180, 0));
+        Instantiate(mapBlocks[blockType], new Vector3(0, 0, 22 + diff), Quaternion.Euler(0, 180, 0));
         Destroy(other.gameObject);
+        speed.value += .1f;
     }
 }
