@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {fileID: 11400000, guid: 967c41be0634b3e40803471165358411, type: 2}
+  score: {fileID: 0}
   mapBlock: {fileID: 4986727104848914051, guid: ffc0a610c75f6584e88c8580239a2c63,
     type: 3}
   mapBlocks: []
@@ -639,10 +640,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 707894232}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91e60a7c24a37da429f7313dcc35a8dc,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 707894231}
   m_SourcePrefab: {fileID: 100100000, guid: 91e60a7c24a37da429f7313dcc35a8dc, type: 3}
 --- !u!1 &707894229 stripped
 GameObject:
@@ -650,18 +647,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 707894228}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &707894231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707894229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b23f7f23737a1840b7c37d09e95f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &707894232
 Animator:
   serializedVersion: 5
@@ -977,6 +962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {fileID: 11400000, guid: 967c41be0634b3e40803471165358411, type: 2}
+  score: {fileID: 11400000, guid: b77ed0b00b9bc3a4bad71ae9d6c541df, type: 2}
   mapBlock: {fileID: 1881029521357306232, guid: e907316457073a047bed11ebda575277,
     type: 3}
   mapBlocks:
