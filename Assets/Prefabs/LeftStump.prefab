@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 586bc8148cab32549b3e500aa7af8bfb,
         type: 3}
       propertyPath: m_TagString
-      value: Obstacles
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -227,6 +227,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeStumpMesh
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baac3fb9ab246c3479831aeb5ab34b16,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -234,7 +239,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: baac3fb9ab246c3479831aeb5ab34b16,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6476676644665367345}
+      addedObject: {fileID: 3140891782235716053}
   m_SourcePrefab: {fileID: 100100000, guid: baac3fb9ab246c3479831aeb5ab34b16, type: 3}
 --- !u!4 &5862662454820956756 stripped
 Transform:
@@ -248,8 +253,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6257440578945027519}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &6476676644665367345
-BoxCollider:
+--- !u!135 &3140891782235716053
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -267,8 +272,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1934981, y: 0.9786638, z: 2.5358174}
-  m_Center: {x: -0.15722749, y: 0.48864567, z: -0.038502216}
+  m_Radius: 1.2679087
+  m_Center: {x: -0.15722749, y: -0.1, z: -0.038502216}
 --- !u!1001 &7539704182576539575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -356,6 +361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreeMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eac63c8daea3b244c9af0a7b7aadcf9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -486,6 +496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreeMesh (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eac63c8daea3b244c9af0a7b7aadcf9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
