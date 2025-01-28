@@ -10,7 +10,7 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed.value = 1f;
+        speed.value = 5f;
 
         Instantiate(mapBlock, new Vector3(0, 0, -11), Quaternion.Euler(0, 180, 0));
         Instantiate(mapBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0));

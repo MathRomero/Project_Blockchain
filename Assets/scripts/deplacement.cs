@@ -14,7 +14,7 @@ public class Deplacement : MonoBehaviour
    
     private int currentLane = 1;
     [SerializeField]
-    public float laneWidth = 2f;
+    private float laneWidth = 2f;
     private Vector3 OriginalSize;
     private Vector3 OriginalCenter;
 
@@ -26,7 +26,7 @@ public class Deplacement : MonoBehaviour
 
     private void Start()
     {
-         animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
         OriginalCenter = boxCollider.center;
         OriginalSize = boxCollider.size;
@@ -54,17 +54,14 @@ public class Deplacement : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         float targetX = currentLane * laneWidth; 
-        Vector3 targetPosition = new Vector3(targetX, rb.position.y, rb.position.z);
+        Vector3 targetPosition = new Vector3(targetX-1.25f, rb.position.y, rb.position.z);
 
         rb.MovePosition(targetPosition);
         IsGrounded = Mathf.Abs(rb.velocity.y) < 0.01f;
         if (IsGrounded)
         {
             animator.SetBool("IsJump", false);
-
-
         }
         else
         {
@@ -74,20 +71,16 @@ public class Deplacement : MonoBehaviour
         {
             boxCollider.size = new Vector3(1, 1, 1);
             boxCollider.center = new Vector3(0, 0.5f, 0);
-
         }
         else
         {
             RestoreCollider();
         }
-
-
     }
 
 
     private void ChangeLane(int direction)
     {
-        
         currentLane = Mathf.Clamp(currentLane + direction, 0, 2);
         canChangeLane = false;
     }
@@ -96,18 +89,14 @@ public class Deplacement : MonoBehaviour
     {
         if (IsGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-           
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);  
         }
-
-
     }
     private void Roll(InputAction.CallbackContext obj)
     {
         if (IsGrounded) 
         {
             animator.SetTrigger("Roll");
-            
 
         }
     }
@@ -120,18 +109,14 @@ public class Deplacement : MonoBehaviour
 
     private void OnEnable()
     {
-        
         jump.action.started += Jump;
         roll.action.started += Roll;
-
     }
 
     private void OnDisable()
     {
-        
         jump.action.started -= Jump;
         roll.action.started -= Roll;
-
     }
 
 }
