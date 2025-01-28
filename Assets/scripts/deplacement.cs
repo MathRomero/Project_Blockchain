@@ -7,6 +7,7 @@ public class Deplacement : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     Animator animator;
+    BoxCollider boxCollider;
 
     private bool IsGrounded;
     private bool canChangeLane;
@@ -14,15 +15,22 @@ public class Deplacement : MonoBehaviour
     private int currentLane = 1;
     [SerializeField]
     public float laneWidth = 2f;
+    private Vector3 OriginalSize;
+    private Vector3 OriginalCenter;
 
 
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference roll;
+    
 
     private void Start()
     {
          animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
+        OriginalCenter = boxCollider.center;
+        OriginalSize = boxCollider.size;
+
     }
     private void Update()
     {
@@ -40,7 +48,8 @@ public class Deplacement : MonoBehaviour
         {
             canChangeLane = true; 
         }
-       
+      
+
     }
 
     private void FixedUpdate()
@@ -61,7 +70,16 @@ public class Deplacement : MonoBehaviour
         {
             animator.SetBool("IsJump", true);
         }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
+        {
+            boxCollider.size = new Vector3(1, 1, 1);
+            boxCollider.center = new Vector3(0, 0.5f, 0);
 
+        }
+        else
+        {
+            RestoreCollider();
+        }
 
 
     }
@@ -81,7 +99,8 @@ public class Deplacement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
            
         }
-      
+
+
     }
     private void Roll(InputAction.CallbackContext obj)
     {
@@ -89,9 +108,15 @@ public class Deplacement : MonoBehaviour
         {
             animator.SetTrigger("Roll");
             
+
         }
     }
-   
+    public void RestoreCollider()
+    {
+        boxCollider.size = OriginalSize;
+        boxCollider.center = OriginalCenter;
+    }
+
 
     private void OnEnable()
     {
