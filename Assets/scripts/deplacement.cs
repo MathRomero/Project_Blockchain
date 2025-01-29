@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Deplacement : MonoBehaviour
 {
@@ -10,19 +9,17 @@ public class Deplacement : MonoBehaviour
     BoxCollider boxCollider;
 
     private bool IsGrounded;
-    private bool canChangeLane;
-   
+    private bool canChangeLane = true;
+
     private int currentLane = 1;
     [SerializeField]
     private float laneWidth = 2f;
     private Vector3 OriginalSize;
     private Vector3 OriginalCenter;
 
-
-    public InputActionReference move;
-    public InputActionReference jump;
-    public InputActionReference roll;
-    
+    private Vector2 startTouchPosition;
+    private Vector2 endTouchPosition;
+    private float swipeThreshold = 50f;
 
     private void Start()
     {
@@ -30,43 +27,22 @@ public class Deplacement : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
         OriginalCenter = boxCollider.center;
         OriginalSize = boxCollider.size;
-
     }
+
     private void Update()
     {
-        
-        Vector2 input = move.action.ReadValue<Vector2>();
-        if (canChangeLane && input.x > 0.5f) 
-        {
-            ChangeLane(1);
-        }
-        else if (canChangeLane && input.x < -0.5f) 
-        {
-            ChangeLane(-1);
-        }
-        if (Mathf.Abs(input.x) < 0.5f)
-        {
-            canChangeLane = true; 
-        }
-      
-
+        DetectSwipe();
     }
 
     private void FixedUpdate()
     {
-        float targetX = currentLane * laneWidth; 
-        Vector3 targetPosition = new Vector3(targetX-1.25f, rb.position.y, rb.position.z);
+        float targetX = currentLane * laneWidth;
+        Vector3 targetPosition = new Vector3(targetX - 1.25f, rb.position.y, rb.position.z);
+        rb.MovePosition(Vector3.Lerp(rb.position, targetPosition, Time.fixedDeltaTime * moveSpeed));
 
-        rb.MovePosition(targetPosition);
         IsGrounded = Mathf.Abs(rb.velocity.y) < 0.01f;
-        if (IsGrounded)
-        {
-            animator.SetBool("IsJump", false);
-        }
-        else
-        {
-            animator.SetBool("IsJump", true);
-        }
+        animator.SetBool("IsJump", !IsGrounded);
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
         {
             boxCollider.size = new Vector3(1, 1, 1);
@@ -78,45 +54,85 @@ public class Deplacement : MonoBehaviour
         }
     }
 
+    private void DetectSwipe()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                startTouchPosition = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                endTouchPosition = touch.position;
+                ProcessSwipe(endTouchPosition - startTouchPosition);
+            }
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            startTouchPosition = Input.mousePosition;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            endTouchPosition = Input.mousePosition;
+            ProcessSwipe(endTouchPosition - startTouchPosition);
+        }
+    }
+
+    private void ProcessSwipe(Vector2 swipeDelta)
+    {
+        if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
+        {
+            if (swipeDelta.x > swipeThreshold && canChangeLane)
+            {
+                ChangeLane(1);
+            }
+            else if (swipeDelta.x < -swipeThreshold && canChangeLane)
+            {
+                ChangeLane(-1);
+            }
+        }
+        else
+        {
+            if (swipeDelta.y > swipeThreshold && IsGrounded)
+            {
+                Jump();
+            }
+            else if (swipeDelta.y < -swipeThreshold && IsGrounded)
+            {
+                Roll();
+            }
+        }
+    }
 
     private void ChangeLane(int direction)
     {
         currentLane = Mathf.Clamp(currentLane + direction, 0, 2);
         canChangeLane = false;
+        Debug.Log("Lane changed to: " + currentLane);
+        Invoke("ResetLaneChange", 0.2f);
     }
 
-    private void Jump(InputAction.CallbackContext obj)
+    private void ResetLaneChange()
     {
-        if (IsGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);  
-        }
+        canChangeLane = true;
     }
-    private void Roll(InputAction.CallbackContext obj)
-    {
-        if (IsGrounded) 
-        {
-            animator.SetTrigger("Roll");
 
-        }
+    private void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+
+    private void Roll()
+    {
+        animator.SetTrigger("Roll");
+    }
+
     public void RestoreCollider()
     {
         boxCollider.size = OriginalSize;
         boxCollider.center = OriginalCenter;
     }
-
-
-    private void OnEnable()
-    {
-        jump.action.started += Jump;
-        roll.action.started += Roll;
-    }
-
-    private void OnDisable()
-    {
-        jump.action.started -= Jump;
-        roll.action.started -= Roll;
-    }
-
 }
