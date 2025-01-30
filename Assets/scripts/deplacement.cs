@@ -111,7 +111,6 @@ public class Deplacement : MonoBehaviour
     {
         currentLane = Mathf.Clamp(currentLane + direction, 0, 2);
         canChangeLane = false;
-        Debug.Log("Lane changed to: " + currentLane);
         Invoke("ResetLaneChange", 0.2f);
     }
 
