@@ -5,7 +5,6 @@ public class Death : MonoBehaviour
 {
     Animator animator;
     [SerializeField] private FloatSO speed;
-    [SerializeField] private Object gameOverScene;
     
     private float timer = 0f;
     private bool isDead = false;
@@ -22,7 +21,7 @@ public class Death : MonoBehaviour
             timer += Time.deltaTime;
 
             if (timer > 2f)
-                SceneManager.LoadScene(gameOverScene.name);
+                SceneManager.LoadScene("GameOver");
         }
             
     }
