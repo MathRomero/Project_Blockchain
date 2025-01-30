@@ -1,27 +1,36 @@
-
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
     Animator animator;
     [SerializeField] private FloatSO speed;
-    // Start is called before the first frame update
+
     void Start()
     {
         animator = GetComponent<Animator>();
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacles"))
         {
             animator.SetTrigger("Dead");
             speed.value = 0f;
+
+           
+            Invoke("ReloadScene", 2f);  
         }
     }
 
-    // Update is called once per frame
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+    }
+
     void Update()
     {
         
     }
 }
+

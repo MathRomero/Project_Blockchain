@@ -4,7 +4,7 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'androidx.browser:browser:1.4.0' // Assets/Thirdweb/Editor/ThirdwebDependencies.xml:3
+    implementation 'androidx.browser:browser:1.4.0' // Assets/unity-5/Assets/Thirdweb/Editor/ThirdwebDependencies.xml:3
 // Android Resolver Dependencies End
 **DEPS**}
 
